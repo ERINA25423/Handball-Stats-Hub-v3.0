@@ -528,29 +528,15 @@ a{
 
 }
 
-.panel-position{
-
-    min-height:520px;
-
-}
-
-.panel-course{
-
-    min-height:520px;
-
-}
-
-.panel-type{
-
-    min-height:520px;
-
-}
-
+.panel-position,
+.panel-course,
+.panel-type,
 .panel-result{
-
-    min-height:520px;
-
+    height:390px;
+    min-height:390px;
 }
+
+    
 
 /* ===========================================================
    Part 3
@@ -581,7 +567,7 @@ a{
 
     gap:10px;
 
-    min-height:105px;
+    min-height:72px;
 
     padding:12px;
 
@@ -777,7 +763,8 @@ a{
 
     width:100%;
 
-    min-height:72px;
+  flex:1;
+min-height:0;
 
     margin-bottom:14px;
 
@@ -835,7 +822,8 @@ a{
 
     width:100%;
 
-    min-height:72px;
+   flex:1;
+min-height:0;
 
     margin-bottom:14px;
 
