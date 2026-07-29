@@ -315,7 +315,158 @@ App.Game = (function () {
      Events
      ========================================================== */
 
-  function bindEvents() {
+  /* ==========================================================
+     Team / Position
+     ========================================================== */
+
+  function setSelectedTeam(team) {
+
+    if (team !== "my" && team !== "opponent") {
+      return;
+    }
+
+    selectedTeam = team;
+
+    renderTeamToggle();
+
+  }
+
+  function renderTeamToggle() {
+
+    const e = els();
+
+    if (!e.firstTeamToggle) {
+      return;
+    }
+
+    e.firstTeamToggle
+      .querySelectorAll("[data-team]")
+      .forEach(button => {
+
+        const active =
+          button.dataset.team === selectedTeam;
+
+        button.classList.toggle("active", active);
+
+      });
+
+  }
+
+  function updatePositionNumber(team, position, number) {
+
+    if (!positionNumbers[team]) {
+      return;
+    }
+
+    positionNumbers[team][position] = number;
+
+  }
+
+  function getPositionNumber(team, position) {
+
+    if (!positionNumbers[team]) {
+      return "";
+    }
+
+    return positionNumbers[team][position] || "";
+
+  }
+
+  function selectPosition(position) {
+
+    if (!POSITIONS.includes(position)) {
+      return;
+    }
+
+    selectedPosition = position;
+
+    renderSelectedPosition();
+
+  }
+
+  function renderSelectedPosition() {
+
+    document
+      .querySelectorAll("[data-position]")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.position === selectedPosition
+        );
+
+      });
+
+  }
+
+     function bindTeamToggleEvents() {
+
+    document
+      .querySelectorAll("[data-team]")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          setSelectedTeam(button.dataset.team);
+
+        });
+
+      });
+
+  }
+
+  function bindPositionEvents() {
+
+    document
+      .querySelectorAll("[data-position]")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          selectPosition(button.dataset.position);
+
+        });
+
+      });
+
+  }
+
+  function bindNumberInputs() {
+
+    document
+      .querySelectorAll("[data-number-position]")
+      .forEach(input => {
+
+        input.addEventListener("input", () => {
+
+          updatePositionNumber(
+            selectedTeam,
+            input.dataset.numberPosition,
+            input.value.trim()
+          );
+
+        });
+
+      });
+
+  }
+
+  function refreshNumberInputs() {
+
+    document
+      .querySelectorAll("[data-number-position]")
+      .forEach(input => {
+
+        input.value = getPositionNumber(
+          selectedTeam,
+          input.dataset.numberPosition
+        );
+
+      });
+
+  }
+   
+   function bindEvents() {
 
     const e = els();
 
@@ -325,6 +476,8 @@ App.Game = (function () {
         handleGotoNewMatch
       );
     }
+
+         
 
     if (e.btnBackHome) {
       e.btnBackHome.addEventListener(
@@ -340,6 +493,12 @@ App.Game = (function () {
       );
     }
 
+      bindTeamToggleEvents();
+
+    bindPositionEvents();
+
+    bindNumberInputs(); 
+      
   }
 
   /* ==========================================================
