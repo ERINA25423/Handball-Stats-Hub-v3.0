@@ -329,6 +329,7 @@ App.Game = (function () {
 
     renderTeamToggle();
 
+    refreshNumberInputs(); 
   }
 
   function renderTeamToggle() {
