@@ -908,13 +908,6 @@ App.Game = (function () {
   currentMatch.analysis.players = buildPlayerAnalysis();
 }
 
-  currentMatch.analysis = buildAnalysis();
-
-  currentMatch.analysis.players =
-    buildPlayerAnalysis();
-
-}
-
        function renderAnalysis() {
 
     const e = els();
@@ -1353,11 +1346,6 @@ App.Game = (function () {
     e.analysis.innerHTML = html;
 
   } 
-
-     renderPlayerDetails();
-     renderRanking();
-     renderGoalkeeperAnalysis();
-     renderCourtPlayerAnalysis();
 
        /* ==========================================================
      CSV Export
