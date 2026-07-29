@@ -1643,25 +1643,6 @@ App.Game = (function () {
 
   }
 
-
-
-    currentMatch.events.push(
-      createEventObject()
-    );
-
-    renderHistory();
-
-    resetSelections();
-
-    renderSelectedPosition();
-
-    renderSelectedShotCourse();
-
-    renderSelectedShotType();
-
-    renderSelectedResult();
-
-  }
    
      function bindTeamToggleEvents() {
 
@@ -1764,7 +1745,6 @@ App.Game = (function () {
     bindNumberInputs(); 
 
       bindShotSelectionEvents();
-      
   }
 
   /* ==========================================================
