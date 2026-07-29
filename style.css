@@ -320,9 +320,11 @@ button{
 
     border:2px solid var(--border);
 
-    border-radius:20px;
+    border-radius:16px;
 
-    padding:18px;
+    padding:10px;
+
+}
 
 }
 
@@ -518,21 +520,29 @@ a{
 
     grid-template-columns:
         2fr
-        1.4fr
-        .9fr
-        .9fr;
+        1.35fr
+        .85fr
+        .85fr;
 
-    gap:18px;
+    gap:10px;
 
     align-items:start;
 
 }
 
-.panel-position,
-.panel-course,
-.panel-type,
+.panel-position{
+    min-height390px;
+}
+
+.panel-course{
+    min-height:390px;
+}
+
+.panel-type{
+    min-height:390px;
+}
+
 .panel-result{
-    height:390px;
     min-height:390px;
 }
 
@@ -659,7 +669,7 @@ a{
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:12px;
+    gap:8px;
 
 }
 
