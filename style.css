@@ -1862,174 +1862,428 @@ input:focus-visible{
 
 /* ===========================================================
    PHONE LANDSCAPE
+   Part 1 / 2
+   style.css の END OF FILE の直前へ追加
    =========================================================== */
 
-@media screen and (orientation: landscape) and (max-height:500px){
+@media screen and (orientation:landscape) and (max-height:500px){
 
-    .screen{
-        padding:8px 10px;
-        overflow:hidden;
-    }
+html,
+body{
+    overflow:hidden;
+    height:100%;
+}
 
-    .record-header{
-        margin-bottom:10px;
-        gap:12px;
-    }
+#app{
+    max-width:none;
+    width:100%;
+    height:100vh;
+}
 
-    .app-title{
-        font-size:1.8rem;
-    }
+.screen{
+    min-height:100vh;
+    padding:8px 10px;
+    overflow:hidden;
+}
 
-    .half-label{
-        font-size:1rem;
-    }
+/* ==========================
+   HEADER
+========================== */
 
-    .timer-display{
-        min-width:110px;
-        font-size:2rem;
-        padding:8px 12px;
-    }
+.record-header{
 
-    .toolbar-row{
-        grid-template-columns:repeat(7,1fr);
-        gap:10px;
-        margin-bottom:14px;
-    }
+    display:grid;
 
-    .toolbar-btn{
-        height:56px;
-        font-size:1rem;
-    }
+    grid-template-columns:
+        auto
+        1fr
+        auto;
 
-    .record-grid{
+    align-items:center;
 
-        display:grid;
+    gap:12px;
 
-        grid-template-columns:
-            1.45fr
-            1.75fr
-            .9fr
-            .9fr;
-
-        gap:12px;
-        align-items:start;
-
-    }
-
-    .panel{
-
-        padding:14px;
-        border-radius:18px;
-
-    }
-
-    .panel-title{
-
-        font-size:.8rem;
-        margin-bottom:12px;
-        letter-spacing:.18em;
-
-    }
-
-    .panel-position,
-    .panel-course,
-    .panel-type,
-    .panel-result{
-
-        height:390px;
-        min-height:390px;
-
-    }
-
-    .position-grid{
-
-        grid-template-columns:repeat(3,1fr);
-        gap:10px;
-
-    }
-
-    .position-btn{
-
-        min-height:72px;
-        gap:6px;
-        padding:8px;
-
-    }
-
-    .position-label{
-
-        font-size:1rem;
-
-    }
-
-    .number-input{
-
-        width:46px;
-        height:30px;
-        font-size:.9rem;
-
-    }
-
-    .course-grid{
-
-        gap:6px;
-
-    }
-
-    .course-btn{
-
-        font-size:1.05rem;
-
-    }
-
-    .type-btn{
-
-        margin-bottom:10px;
-        font-size:1rem;
-
-    }
-
-    .result-btn{
-
-        margin-bottom:10px;
-        font-size:1rem;
-
-    }
-
-    .action-row{
-
-        margin-top:14px;
-
-        display:grid;
-
-        grid-template-columns:
-            1fr
-            1fr
-            1fr
-            1.3fr
-            2.2fr
-            2.2fr;
-
-        gap:10px;
-
-    }
-
-    .btn-action{
-
-        height:68px;
-        font-size:1rem;
-
-    }
-
-    .btn-save,
-    .btn-end{
-
-        height:68px;
-        font-size:1.15rem;
-
-    }
+    margin-bottom:10px;
 
 }
+
+.app-title{
+
+    font-size:1.8rem;
+
+    white-space:nowrap;
+
+}
+
+.half-label{
+
+    justify-self:end;
+
+    font-size:1rem;
+
+    padding:8px 16px;
+
+}
+
+.timer-display{
+
+    min-width:105px;
+
+    font-size:2rem;
+
+    padding:8px 12px;
+
+}
+
+/* ==========================
+   TOOLBAR
+========================== */
+
+.toolbar-row{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,minmax(0,1fr));
+
+    gap:8px;
+
+    margin-bottom:12px;
+
+}
+
+.toolbar-btn{
+
+    height:54px;
+
+    font-size:.95rem;
+
+}
+
+/* ==========================
+   MAIN GRID
+========================== */
+
+.record-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1.42fr
+        1.75fr
+        .92fr
+        .92fr;
+
+    gap:12px;
+
+    align-items:start;
+
+}
+
+/* ==========================
+   PANEL
+========================== */
+
+.panel{
+
+    padding:12px;
+
+    border-radius:18px;
+
+}
+
+.panel-title{
+
+    font-size:.82rem;
+
+    margin-bottom:10px;
+
+    letter-spacing:.18em;
+
+}
+
+.panel-position,
+.panel-course,
+.panel-type,
+.panel-result{
+
+    height:385px;
+
+    min-height:385px;
+
+}
+
+/* ==========================
+   POSITION
+========================== */
+
+.position-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+
+}
+
+.position-btn{
+
+    min-height:72px;
+
+    padding:8px;
+
+    gap:6px;
+
+}
+
+.position-label{
+
+    font-size:1rem;
+
+}
+
+.number-input{
+
+    width:44px;
+
+    height:28px;
+
+    border-radius:8px;
+
+    font-size:.9rem;
+
+}
+
+/* ==========================
+   COURSE
+========================== */
+
+.course-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:6px;
+
+}
+
+.course-btn{
+
+    font-size:1rem;
+
+}
+
+/* ==========================
+   TYPE
+========================== */
+
+.panel-type{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.type-btn{
+
+    flex:1;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+}
+
+.type-btn:last-child{
+
+    margin-bottom:0;
+
+}
+
+/* ==========================
+   RESULT
+========================== */
+
+.panel-result{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.result-btn{
+
+    flex:1;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+}
+
+.result-btn:last-child{
+
+    margin-bottom:0;
+
+}
+
+ /* ==========================
+   ACTION ROW
+========================== */
+
+.action-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        1.2fr
+        2fr
+        2fr;
+
+    gap:8px;
+
+    margin-top:12px;
+
+}
+
+.btn-action{
+
+    height:54px;
+
+    font-size:.95rem;
+
+    border-radius:12px;
+
+}
+
+.btn-save{
+
+    height:54px;
+
+    font-size:1rem;
+
+    border-radius:12px;
+
+}
+
+.btn-end{
+
+    height:54px;
+
+    font-size:1rem;
+
+    border-radius:12px;
+
+}
+
+/* ==========================
+   HISTORY / MODAL
+========================== */
+
+.history-modal-list{
+
+    max-height:55vh;
+
+}
+
+.modal-box{
+
+    max-height:88vh;
+
+}
+
+/* ==========================
+   ANALYSIS
+========================== */
+
+.tabs{
+
+    gap:10px;
+
+}
+
+.tab-btn{
+
+    height:50px;
+
+    font-size:.95rem;
+
+}
+
+.analysis-card{
+
+    padding:18px;
+
+}
+
+/* ==========================
+   PREVENT OVERFLOW
+========================== */
+
+.panel-position,
+.panel-course,
+.panel-type,
+.panel-result{
+
+    overflow:hidden;
+
+}
+
+.position-grid,
+.course-grid{
+
+    width:100%;
+
+}
+
+.position-btn,
+.course-btn,
+.type-btn,
+.result-btn{
+
+    min-width:0;
+
+}
+
+.action-row>*{
+
+    min-width:0;
+
+}
+
+.toolbar-row>*{
+
+    min-width:0;
+
+}
+
+button{
+
+    white-space:nowrap;
+
+}
+
+/* ==========================
+   HIDE AUTH FOOTER
+========================== */
+
+#auth-footer{
+
+    display:none;
+
+}
+
+}  
 
 
 
