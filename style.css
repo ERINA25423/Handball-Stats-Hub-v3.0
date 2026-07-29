@@ -1860,7 +1860,176 @@ input:focus-visible{
 }
 
 
+/* ===========================================================
+   PHONE LANDSCAPE
+   =========================================================== */
 
+@media screen and (orientation: landscape) and (max-height:500px){
+
+    .screen{
+        padding:8px 10px;
+        overflow:hidden;
+    }
+
+    .record-header{
+        margin-bottom:10px;
+        gap:12px;
+    }
+
+    .app-title{
+        font-size:1.8rem;
+    }
+
+    .half-label{
+        font-size:1rem;
+    }
+
+    .timer-display{
+        min-width:110px;
+        font-size:2rem;
+        padding:8px 12px;
+    }
+
+    .toolbar-row{
+        grid-template-columns:repeat(7,1fr);
+        gap:10px;
+        margin-bottom:14px;
+    }
+
+    .toolbar-btn{
+        height:56px;
+        font-size:1rem;
+    }
+
+    .record-grid{
+
+        display:grid;
+
+        grid-template-columns:
+            1.45fr
+            1.75fr
+            .9fr
+            .9fr;
+
+        gap:12px;
+        align-items:start;
+
+    }
+
+    .panel{
+
+        padding:14px;
+        border-radius:18px;
+
+    }
+
+    .panel-title{
+
+        font-size:.8rem;
+        margin-bottom:12px;
+        letter-spacing:.18em;
+
+    }
+
+    .panel-position,
+    .panel-course,
+    .panel-type,
+    .panel-result{
+
+        height:390px;
+        min-height:390px;
+
+    }
+
+    .position-grid{
+
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+
+    }
+
+    .position-btn{
+
+        min-height:72px;
+        gap:6px;
+        padding:8px;
+
+    }
+
+    .position-label{
+
+        font-size:1rem;
+
+    }
+
+    .number-input{
+
+        width:46px;
+        height:30px;
+        font-size:.9rem;
+
+    }
+
+    .course-grid{
+
+        gap:6px;
+
+    }
+
+    .course-btn{
+
+        font-size:1.05rem;
+
+    }
+
+    .type-btn{
+
+        margin-bottom:10px;
+        font-size:1rem;
+
+    }
+
+    .result-btn{
+
+        margin-bottom:10px;
+        font-size:1rem;
+
+    }
+
+    .action-row{
+
+        margin-top:14px;
+
+        display:grid;
+
+        grid-template-columns:
+            1fr
+            1fr
+            1fr
+            1.3fr
+            2.2fr
+            2.2fr;
+
+        gap:10px;
+
+    }
+
+    .btn-action{
+
+        height:68px;
+        font-size:1rem;
+
+    }
+
+    .btn-save,
+    .btn-end{
+
+        height:68px;
+        font-size:1.15rem;
+
+    }
+
+}
 
 
 
