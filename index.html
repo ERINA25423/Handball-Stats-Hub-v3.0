@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Handball Stats Hub v3</title>
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+<section id="homePage" class="page active">
+<header class="homeHeader">
+<h1>Handball Stats Hub</h1>
+<p>Goalkeeper & Team Analysis</p>
+</header>
+
+<div class="homeMenu">
+<button id="newMatchButton" class="primaryButton">NEW MATCH</button>
+<button id="matchHistoryButton" class="secondaryButton">MATCH HISTORY</button>
+<button id="seasonAnalysisButton" class="secondaryButton">SEASON ANALYSIS</button>
+<button id="settingsButton" class="secondaryButton">SETTINGS</button>
+</div>
+</section>
+
+<section id="newMatchPage" class="page">
+
+<header class="pageHeader">
+<button id="backHomeButton" class="backButton">←</button>
+<h2>NEW MATCH</h2>
+</header>
+
+<div class="matchInfo">
+
+<label>
+<span>Date</span>
+<input type="date" id="matchDate">
+</label>
+
+<label>
+<span>Competition</span>
+<input type="text" id="competitionName">
+</label>
+
+<label>
+<span>Venue</span>
+<input type="text" id="venueName">
+</label>
+
+<label>
+<span>Our Team</span>
+<input type="text" id="ourTeamName">
+</label>
+
+<label>
+<span>Opponent</span>
+<input type="text" id="opponentTeamName">
+</label>
+
+<label>
+<span>Category</span>
+<select id="matchCategory">
+<option>League</option>
+<option>Practice Match</option>
+<option>Tournament</option>
+<option>Training</option>
+</select>
+</label>
+
+</div>
+
+<div class="startArea">
+<button id="startMatchButton" class="primaryButton largeButton">
+START MATCH
+</button>
+</div>
+
+</section>
+
+<section id="gamePage" class="page">
+
+<header class="gameHeader">
+
+<div class="headerLeft">
+<h2 id="headerMatchTitle">Match</h2>
+<div id="currentHalf">1st HALF</div>
+</div>
+
+<div class="headerCenter">
+<div id="gameTimer">00:00</div>
+</div>
+
+<div class="headerRight">
+<button id="startTimerButton">▶</button>
+<button id="pauseTimerButton">⏸</button>
+<button id="resetTimerButton">⟲</button>
+</div>
+
+</header>
+
+<div class="gameContainer">
+
+<div class="leftPanel">
+
+<section class="teamSection">
+<h3>TEAM</h3>
+<div class="teamButtons">
+<button id="ourTeamButton" class="teamButton active">OUR</button>
+<button id="opponentTeamButton" class="teamButton">OPPONENT</button>
+</div>
+</section>
+
+<section class="playerSection">
+<h3>PLAYER</h3>
+<div id="playerGrid" class="playerGrid">
+<button class="playerButton" data-player="1">1</button>
+<button class="playerButton" data-player="2">2</button>
+<button class="playerButton" data-player="3">3</button>
+<button class="playerButton" data-player="4">4</button>
+<button class="playerButton" data-player="5">5</button>
+<button class="playerButton" data-player="6">6</button>
+<button class="playerButton" data-player="7">7</button>
+</div>
+</section>
+
+<section class="positionSection">
+<h3>POSITION</h3>
+<div class="positionGrid">
+<button class="positionButton" data-position="LW">LW</button>
+<button class="positionButton" data-position="LB">LB</button>
+<button class="positionButton" data-position="CB">CB</button>
+<button class="positionButton" data-position="RB">RB</button>
+<button class="positionButton" data-position="RW">RW</button>
+<button class="positionButton" data-position="PV">PV</button>
+<button class="positionButton" data-position="EP">EP</button>
+</div>
+</section>
+
+</div>
+
+<div class="centerPanel">
+
+<section class="courtSection">
+<h3>SHOT COURSE</h3>
+
+<div id="courtGrid" class="courtGrid">
+
+<button class="courseButton" data-course="LT"></button>
+<button class="courseButton" data-course="CT"></button>
+<button class="courseButton" data-course="RT"></button>
+
+<button class="courseButton" data-course="LM"></button>
+<button class="courseButton center" data-course="CM"></button>
+<button class="courseButton" data-course="RM"></button>
+
+<button class="courseButton" data-course="LB"></button>
+<button class="courseButton" data-course="CB"></button>
+<button class="courseButton" data-course="RB"></button>
+
+</div>
+
+</section>
+
+</div>
+
+<div class="rightPanel">
+
+<section class="shotTypeSection">
+<h3>SHOT TYPE</h3>
+<div class="shotTypeGrid">
+<button class="shotTypeButton" data-type="Jump">Jump</button>
+<button class="shotTypeButton" data-type="Step">Step</button>
+<button class="shotTypeButton" data-type="Standing">Standing</button>
+<button class="shotTypeButton" data-type="Wing">Wing</button>
+<button class="shotTypeButton" data-type="FastBreak">Fast Break</button>
+<button class="shotTypeButton" data-type="7m">7m</button>
+<button class="shotTypeButton" data-type="Spin">Spin</button>
+<button class="shotTypeButton" data-type="Lob">Lob</button>
+</div>
+</section>
+
+<section class="resultSection">
+<h3>RESULT</h3>
+<div class="resultGrid">
+<button class="resultButton goal" data-result="Goal">GOAL</button>
+<button class="resultButton save" data-result="Save">SAVE</button>
+<button class="resultButton miss" data-result="Miss">MISS</button>
+<button class="resultButton block" data-result="Block">BLOCK</button>
+</div>
+</section>
+
+<section class="memoSection">
+<h3>MEMO</h3>
+<textarea id="eventMemo" rows="4" placeholder="Input memo..."></textarea>
+</section>
+
+<section class="saveSection">
+<button id="saveEventButton" class="primaryButton largeButton">SAVE EVENT</button>
+</section>
+
+</div>
+
+<div class="bottomPanel">
+
+<section class="actionSection">
+<div class="actionGrid">
+<button id="otherEventButton" class="secondaryButton">OTHER EVENT</button>
+<button id="undoButton" class="secondaryButton">UNDO</button>
+<button id="changeHalfButton" class="secondaryButton">CHANGE HALF</button>
+<button id="finishMatchButton" class="dangerButton">FINISH MATCH</button>
+</div>
+</section>
+
+<section class="historySection">
+<div class="historyHeader">
+<h3>EVENT HISTORY</h3>
+<button id="clearHistoryButton" class="iconButton">CLEAR</button>
+</div>
+
+<div id="eventHistoryList" class="historyList">
+<p class="emptyHistory">No events recorded.</p>
+</div>
+</section>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="historyPage" class="page">
+
+<header class="pageHeader">
+<button id="historyBackButton" class="backButton">←</button>
+<h2>MATCH HISTORY</h2>
+</header>
+
+<div class="historyPageContainer">
+
+<div class="historyToolbar">
+<input type="search" id="historySearch" placeholder="Search by team or competition">
+<select id="historyFilter">
+<option value="all">All Matches</option>
+<option value="league">League</option>
+<option value="tournament">Tournament</option>
+<option value="practice">Practice</option>
+<option value="training">Training</option>
+</select>
+</div>
+
+<div id="matchHistoryList" class="matchHistoryList"></div>
+
+</div>
+
+</section>
+
+<section id="matchDetailPage" class="page">
+
+<header class="pageHeader">
+<button id="detailBackButton" class="backButton">←</button>
+<h2>MATCH DETAIL</h2>
+</header>
+
+<div id="matchDetailContent" class="detailContainer"></div>
+
+<div class="detailButtons">
+<button id="openAnalysisButton" class="primaryButton">OPEN ANALYSIS</button>
+<button id="deleteMatchButton" class="dangerButton">DELETE MATCH</button>
+</div>
+
+</section>
+
+<section id="analysisPage" class="page">
+
+<header class="pageHeader">
+<button id="analysisBackButton" class="backButton">←</button>
+<h2>ANALYSIS</h2>
+</header>
+
+<div id="analysisContent" class="analysisContainer"></div>
+
+</section>
+
+<section id="settingsPage" class="page">
+
+<header class="pageHeader">
+<button id="settingsBackButton" class="backButton">←</button>
+<h2>SETTINGS</h2>
+</header>
+
+<div class="settingsContainer">
+
+<button id="loginButton" class="primaryButton">Google Login</button>
+<button id="logoutButton" class="secondaryButton">Logout</button>
+
+<label>
+<span>Dark Mode</span>
+<input type="checkbox" id="darkModeToggle">
+</label>
+
+<label>
+<span>Auto Save</span>
+<input type="checkbox" id="autoSaveToggle" checked>
+</label>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="models/Player.js"></script>
+<script src="models/Team.js"></script>
+<script src="models/Shot.js"></script>
+<script src="models/MatchEvent.js"></script>
+<script src="models/Match.js"></script>
+
+<script src="js/storage.js"></script>
+<script src="js/timer.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/analysis.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+if("serviceWorker" in navigator){
+window.addEventListener("load",()=>{
+navigator.serviceWorker.register("./service-worker.js");
+});
+}
+</script>
+
+</body>
+</html>
