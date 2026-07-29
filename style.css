@@ -1781,21 +1781,7 @@ input:focus-visible{
    RESPONSIVE
    =========================================================== */
 
-@media (max-width:1100px){
 
-    .record-grid{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
-    .action-row{
-
-        grid-template-columns:repeat(3,1fr);
-
-    }
-
-}
 
 @media (max-width:768px){
 
@@ -1811,18 +1797,7 @@ input:focus-visible{
 
     }
 
-    .record-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .action-row{
-
-        grid-template-columns:1fr;
-
-    }
-
+  
     .tabs{
 
         flex-direction:column;
@@ -1871,7 +1846,7 @@ input:focus-visible{
 html,
 body{
     overflow:hidden;
-    height:100%;
+  
 }
 
 #app{
