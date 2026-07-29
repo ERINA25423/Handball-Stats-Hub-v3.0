@@ -558,17 +558,51 @@ App.Game = (function () {
 
   function saveEvent() {
 
-    if (!currentMatch) {
-      return;
-    }
+  if (!currentMatch) {
+    return;
+  }
 
-    if (!canSaveEvent()) {
+  if (!canSaveEvent()) {
 
-      alert("入力が完了していません。");
+    alert("入力が完了していません。");
 
-      return;
+    return;
 
-    }
+  }
+
+  currentMatch.events.push(
+    createEventObject()
+  );
+
+  updateAnalysis();
+
+  renderHistory();
+
+  renderAnalysis();
+
+  renderAnalysisDetails();
+
+  renderPlayerAnalysis();
+
+  renderPlayerDetails();
+
+  renderRanking();
+
+  renderGoalkeeperAnalysis();
+
+  renderCourtPlayerAnalysis();
+
+  resetSelections();
+
+  renderSelectedPosition();
+
+  renderSelectedShotCourse();
+
+  renderSelectedShotType();
+
+  renderSelectedResult();
+
+}
 
       function renderHistory() {
 
