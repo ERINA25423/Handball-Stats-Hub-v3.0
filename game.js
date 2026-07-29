@@ -400,6 +400,79 @@ App.Game = (function () {
 
   }
 
+     /* ==========================================================
+     Shot Selection
+     ========================================================== */
+
+  function selectShotCourse(course) {
+
+    selectedCourse = course;
+
+    renderSelectedShotCourse();
+
+  }
+
+  function selectShotType(type) {
+
+    selectedShotType = type;
+
+    renderSelectedShotType();
+
+  }
+
+  function selectResult(result) {
+
+    selectedResult = result;
+
+    renderSelectedResult();
+
+  }
+
+  function renderSelectedShotCourse() {
+
+    document
+      .querySelectorAll("[data-shot-course]")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.shotCourse === selectedCourse
+        );
+
+      });
+
+  }
+
+  function renderSelectedShotType() {
+
+    document
+      .querySelectorAll("[data-shot-type]")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.shotType === selectedShotType
+        );
+
+      });
+
+  }
+
+  function renderSelectedResult() {
+
+    document
+      .querySelectorAll("[data-result]")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.result === selectedResult
+        );
+
+      });
+
+  }
+
      function bindTeamToggleEvents() {
 
     document
