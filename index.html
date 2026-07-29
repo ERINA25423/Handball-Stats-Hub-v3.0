@@ -1,342 +1,276 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Handball Stats Hub v3</title>
-<meta name="theme-color" content="#111827">
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Handball Stats Hub</title>
+<meta name="theme-color" content="#0d1117" />
+<meta name="description" content="ハンドボール試合データ記録・分析アプリ" />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Handball Stats" />
+
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <div id="app">
 
-<section id="homePage" class="page active">
-<header class="homeHeader">
-<h1>Handball Stats Hub</h1>
-<p>Goalkeeper & Team Analysis</p>
-</header>
+  <!-- ============================================================ -->
+  <!-- SCREEN 1: HOME                                                -->
+  <!-- ============================================================ -->
+  <section id="screen-home" class="screen active">
+    <div class="home-hero">
+      <h1 class="home-title">Handball Stats Hub</h1>
+      <div class="home-actions">
+        <button id="btn-goto-new-match" class="btn btn-primary btn-block">NEW MATCH</button>
+        <button id="btn-goto-history" class="btn btn-secondary btn-block">MATCH HISTORY</button>
+      </div>
+    </div>
+  </section>
 
-<div class="homeMenu">
-<button id="newMatchButton" class="primaryButton">NEW MATCH</button>
-<button id="matchHistoryButton" class="secondaryButton">MATCH HISTORY</button>
-<button id="seasonAnalysisButton" class="secondaryButton">SEASON ANALYSIS</button>
-<button id="settingsButton" class="secondaryButton">SETTINGS</button>
-</div>
-</section>
+  <!-- ============================================================ -->
+  <!-- SCREEN 2: NEW MATCH SETUP                                     -->
+  <!-- ============================================================ -->
+  <section id="screen-new-match" class="screen">
+    <button id="btn-back-from-new-match" class="btn btn-back">
+      <span class="back-arrow">←</span>
+      <span id="match-status-label">NO MATCH STARTED</span>
+    </button>
 
-<section id="newMatchPage" class="page">
+    <h2 class="section-heading">MATCH INFORMATION</h2>
 
-<header class="pageHeader">
-<button id="backHomeButton" class="backButton">←</button>
-<h2>NEW MATCH</h2>
-</header>
+    <label class="field-label" for="input-date">DATE</label>
+    <input type="date" id="input-date" class="field-input" />
 
-<div class="matchInfo">
+    <label class="field-label" for="input-my-team">MY TEAM</label>
+    <input type="text" id="input-my-team" class="field-input" placeholder="Team name" />
 
-<label>
-<span>Date</span>
-<input type="date" id="matchDate">
-</label>
+    <label class="field-label" for="input-opponent">OPPONENT</label>
+    <input type="text" id="input-opponent" class="field-input" placeholder="Opponent name" />
 
-<label>
-<span>Competition</span>
-<input type="text" id="competitionName">
-</label>
+    <button id="btn-start-match" class="btn btn-primary btn-block btn-large">START MATCH</button>
+  </section>
 
-<label>
-<span>Venue</span>
-<input type="text" id="venueName">
-</label>
+  <!-- ============================================================ -->
+  <!-- SCREEN 3: RECORD (LIVE MATCH INPUT)                           -->
+  <!-- ============================================================ -->
+  <section id="screen-record" class="screen">
 
-<label>
-<span>Our Team</span>
-<input type="text" id="ourTeamName">
-</label>
+    <header class="record-header">
+      <h1 class="app-title">Handball Stats Hub</h1>
+      <div class="half-label" id="half-label">1st Half</div>
+      <div class="timer-display" id="timer-display">00:00</div>
+    </header>
 
-<label>
-<span>Opponent</span>
-<input type="text" id="opponentTeamName">
-</label>
+    <div class="toolbar-row">
+      <button class="toolbar-btn active" id="btn-team-my" data-team="my">MY TEAM</button>
+      <button class="toolbar-btn" id="btn-team-opponent" data-team="opponent">OPPONENT</button>
+      <button class="toolbar-btn" id="btn-timer-minus10" data-timer-adjust="-10">−10s</button>
+      <button class="toolbar-btn" id="btn-timer-minus1" data-timer-adjust="-1">−1s</button>
+      <button class="toolbar-btn toolbar-btn-accent" id="btn-timer-start">START</button>
+      <button class="toolbar-btn" id="btn-timer-plus1" data-timer-adjust="1">+1s</button>
+      <button class="toolbar-btn" id="btn-timer-plus10" data-timer-adjust="10">+10s</button>
+    </div>
 
-<label>
-<span>Category</span>
-<select id="matchCategory">
-<option>League</option>
-<option>Practice Match</option>
-<option>Tournament</option>
-<option>Training</option>
-</select>
-</label>
+    <div class="record-grid">
 
-</div>
+      <!-- POSITION -->
+      <div class="panel panel-position">
+        <div class="panel-title">POSITION</div>
+        <div class="position-grid" id="position-grid">
+          <button class="position-btn" data-position="LW">
+            <span class="position-label">LW</span>
+            <input type="text" class="number-input" data-position-number="LW" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="PV">
+            <span class="position-label">PV</span>
+            <input type="text" class="number-input" data-position-number="PV" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="RW">
+            <span class="position-label">RW</span>
+            <input type="text" class="number-input" data-position-number="RW" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="LB">
+            <span class="position-label">LB</span>
+            <input type="text" class="number-input" data-position-number="LB" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="CB">
+            <span class="position-label">CB</span>
+            <input type="text" class="number-input" data-position-number="CB" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="RB">
+            <span class="position-label">RB</span>
+            <input type="text" class="number-input" data-position-number="RB" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="GK">
+            <span class="position-label">GK</span>
+            <input type="text" class="number-input" data-position-number="GK" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+          <button class="position-btn" data-position="EP">
+            <span class="position-label">EP</span>
+            <input type="text" class="number-input" data-position-number="EP" placeholder="#" inputmode="numeric" maxlength="2" />
+          </button>
+        </div>
+      </div>
 
-<div class="startArea">
-<button id="startMatchButton" class="primaryButton largeButton">
-START MATCH
-</button>
-</div>
+      <!-- SHOT COURSE -->
+      <div class="panel panel-course">
+        <div class="panel-title">SHOT COURSE</div>
+        <div class="course-grid" id="course-grid">
+          <button class="course-btn" data-course="LT">LT</button>
+          <button class="course-btn" data-course="CT">CT</button>
+          <button class="course-btn" data-course="RT">RT</button>
+          <button class="course-btn" data-course="LM">LM</button>
+          <button class="course-btn" data-course="CM">CM</button>
+          <button class="course-btn" data-course="RM">RM</button>
+          <button class="course-btn" data-course="LB9">LB</button>
+          <button class="course-btn" data-course="CB9">CB</button>
+          <button class="course-btn" data-course="RB9">RB</button>
+        </div>
+      </div>
 
-</section>
+      <!-- SHOT TYPE -->
+      <div class="panel panel-type">
+        <div class="panel-title">SHOT TYPE</div>
+        <button class="type-btn" data-shot-type="Normal">Normal</button>
+        <button class="type-btn" data-shot-type="Fast Break">Fast Break</button>
+        <button class="type-btn" data-shot-type="7m">7m</button>
+      </div>
 
-<section id="gamePage" class="page">
+      <!-- RESULT -->
+      <div class="panel panel-result">
+        <div class="panel-title">RESULT</div>
+        <button class="result-btn result-goal" data-result="GOAL">GOAL</button>
+        <button class="result-btn result-saved" data-result="SAVED">SAVED</button>
+        <button class="result-btn result-miss" data-result="MISS">MISS</button>
+        <button class="result-btn result-block" data-result="BLOCK">BLOCK</button>
+      </div>
 
-<header class="gameHeader">
+    </div>
 
-<div class="headerLeft">
-<h2 id="headerMatchTitle">Match</h2>
-<div id="currentHalf">1st HALF</div>
-</div>
+    <div class="action-row">
+      <button id="btn-other" class="btn btn-action">OTHER</button>
+      <button id="btn-inmatch-history" class="btn btn-action">HISTORY</button>
+      <button id="btn-undo" class="btn btn-action">UNDO</button>
+      <button id="btn-change-half" class="btn btn-action">CHANGE HALF</button>
+      <button id="btn-save-event" class="btn btn-save">SAVE EVENT</button>
+      <button id="btn-end-match" class="btn btn-end">END &amp; SAVE MATCH</button>
+    </div>
 
-<div class="headerCenter">
-<div id="gameTimer">00:00</div>
-</div>
+  </section>
 
-<div class="headerRight">
-<button id="startTimerButton">▶</button>
-<button id="pauseTimerButton">⏸</button>
-<button id="resetTimerButton">⟲</button>
-</div>
+  <!-- ============================================================ -->
+  <!-- SCREEN 4: MATCH HISTORY LIST                                  -->
+  <!-- ============================================================ -->
+  <section id="screen-history" class="screen">
+    <h2 class="page-title">MATCH HISTORY</h2>
+    <button id="btn-back-from-history" class="btn btn-back">
+      <span class="back-arrow">←</span> BACK
+    </button>
+    <div id="history-list" class="history-list">
+      <!-- match cards injected by storage.js / main.js -->
+    </div>
+  </section>
 
-</header>
+  <!-- ============================================================ -->
+  <!-- SCREEN 5: ANALYSIS                                            -->
+  <!-- ============================================================ -->
+  <section id="screen-analysis" class="screen">
+    <button id="btn-back-from-analysis" class="btn btn-back">
+      <span class="back-arrow">←</span> BACK
+    </button>
 
-<div class="gameContainer">
+    <div class="tabs" id="analysis-tabs">
+      <button class="tab-btn active" data-tab="overview">OVERVIEW</button>
+      <button class="tab-btn" data-tab="players">PLAYERS</button>
+      <button class="tab-btn" data-tab="gk">GK</button>
+    </div>
 
-<div class="leftPanel">
+    <!-- OVERVIEW TAB -->
+    <div id="tab-overview" class="tab-panel active">
+      <div class="analysis-card">
+        <h3 class="analysis-card-title">OVERVIEW</h3>
+        <div class="stat-grid">
+          <div class="stat-cell"><span class="stat-label">GOALS</span><span class="stat-value" id="stat-goals">0</span></div>
+          <div class="stat-cell"><span class="stat-label">SHOTS</span><span class="stat-value" id="stat-shots">0</span></div>
+          <div class="stat-cell"><span class="stat-label">SHOT %</span><span class="stat-value" id="stat-shot-pct">0%</span></div>
+          <div class="stat-cell"><span class="stat-label">ATTACK %</span><span class="stat-value" id="stat-attack-pct">0%</span></div>
+          <div class="stat-cell"><span class="stat-label">SET %</span><span class="stat-value" id="stat-set-pct">0%</span></div>
+          <div class="stat-cell"><span class="stat-label">FAST BREAK %</span><span class="stat-value" id="stat-fastbreak-pct">0%</span></div>
+          <div class="stat-cell"><span class="stat-label">7M %</span><span class="stat-value" id="stat-7m-pct">0%</span></div>
+          <div class="stat-cell"><span class="stat-label">MISTAKES</span><span class="stat-value" id="stat-mistakes">0</span></div>
+          <div class="stat-cell stat-cell-wide"><span class="stat-label">MISTAKE %</span><span class="stat-value" id="stat-mistake-pct">0%</span></div>
+        </div>
+        <p class="half-breakdown" id="half-breakdown-1">1ST HALF 0 GOALS / 0 SHOTS / 0%</p>
+        <p class="half-breakdown" id="half-breakdown-2">2ND HALF 0 GOALS / 0 SHOTS / 0%</p>
+      </div>
+    </div>
 
-<section class="teamSection">
-<h3>TEAM</h3>
-<div class="teamButtons">
-<button id="ourTeamButton" class="teamButton active">OUR</button>
-<button id="opponentTeamButton" class="teamButton">OPPONENT</button>
-</div>
-</section>
+    <!-- PLAYERS TAB -->
+    <div id="tab-players" class="tab-panel">
+      <div id="players-list" class="players-list">
+        <!-- per-player cards injected by analysis.js -->
+      </div>
+    </div>
 
-<section class="playerSection">
-<h3>PLAYER</h3>
-<div id="playerGrid" class="playerGrid">
-<button class="playerButton" data-player="1">1</button>
-<button class="playerButton" data-player="2">2</button>
-<button class="playerButton" data-player="3">3</button>
-<button class="playerButton" data-player="4">4</button>
-<button class="playerButton" data-player="5">5</button>
-<button class="playerButton" data-player="6">6</button>
-<button class="playerButton" data-player="7">7</button>
-</div>
-</section>
+    <!-- GK TAB -->
+    <div id="tab-gk" class="tab-panel">
+      <div class="analysis-card">
+        <h3 class="analysis-card-title">GOALKEEPER</h3>
+        <div class="stat-grid">
+          <div class="stat-cell"><span class="stat-label">SAVES</span><span class="stat-value" id="gk-saves">0</span></div>
+          <div class="stat-cell"><span class="stat-label">SHOTS FACED</span><span class="stat-value" id="gk-shots-faced">0</span></div>
+          <div class="stat-cell stat-cell-wide"><span class="stat-label">SAVE %</span><span class="stat-value" id="gk-save-pct">0%</span></div>
+        </div>
+        <p class="best-worst-line" id="gk-best-course">BEST COURSE: -</p>
+        <p class="best-worst-line" id="gk-worst-course">WORST COURSE: -</p>
+        <div class="course-breakdown-grid" id="gk-course-breakdown">
+          <!-- 9-zone save% breakdown injected by analysis.js -->
+        </div>
+      </div>
+    </div>
 
-<section class="positionSection">
-<h3>POSITION</h3>
-<div class="positionGrid">
-<button class="positionButton" data-position="LW">LW</button>
-<button class="positionButton" data-position="LB">LB</button>
-<button class="positionButton" data-position="CB">CB</button>
-<button class="positionButton" data-position="RB">RB</button>
-<button class="positionButton" data-position="RW">RW</button>
-<button class="positionButton" data-position="PV">PV</button>
-<button class="positionButton" data-position="EP">EP</button>
-</div>
-</section>
-
-</div>
-
-<div class="centerPanel">
-
-<section class="courtSection">
-<h3>SHOT COURSE</h3>
-
-<div id="courtGrid" class="courtGrid">
-
-<button class="courseButton" data-course="LT"></button>
-<button class="courseButton" data-course="CT"></button>
-<button class="courseButton" data-course="RT"></button>
-
-<button class="courseButton" data-course="LM"></button>
-<button class="courseButton center" data-course="CM"></button>
-<button class="courseButton" data-course="RM"></button>
-
-<button class="courseButton" data-course="LB"></button>
-<button class="courseButton" data-course="CB"></button>
-<button class="courseButton" data-course="RB"></button>
-
-</div>
-
-</section>
-
-</div>
-
-<div class="rightPanel">
-
-<section class="shotTypeSection">
-<h3>SHOT TYPE</h3>
-<div class="shotTypeGrid">
-<button class="shotTypeButton" data-type="Jump">Jump</button>
-<button class="shotTypeButton" data-type="Step">Step</button>
-<button class="shotTypeButton" data-type="Standing">Standing</button>
-<button class="shotTypeButton" data-type="Wing">Wing</button>
-<button class="shotTypeButton" data-type="FastBreak">Fast Break</button>
-<button class="shotTypeButton" data-type="7m">7m</button>
-<button class="shotTypeButton" data-type="Spin">Spin</button>
-<button class="shotTypeButton" data-type="Lob">Lob</button>
-</div>
-</section>
-
-<section class="resultSection">
-<h3>RESULT</h3>
-<div class="resultGrid">
-<button class="resultButton goal" data-result="Goal">GOAL</button>
-<button class="resultButton save" data-result="Save">SAVE</button>
-<button class="resultButton miss" data-result="Miss">MISS</button>
-<button class="resultButton block" data-result="Block">BLOCK</button>
-</div>
-</section>
-
-<section class="memoSection">
-<h3>MEMO</h3>
-<textarea id="eventMemo" rows="4" placeholder="Input memo..."></textarea>
-</section>
-
-<section class="saveSection">
-<button id="saveEventButton" class="primaryButton largeButton">SAVE EVENT</button>
-</section>
-
-</div>
-
-<div class="bottomPanel">
-
-<section class="actionSection">
-<div class="actionGrid">
-<button id="otherEventButton" class="secondaryButton">OTHER EVENT</button>
-<button id="undoButton" class="secondaryButton">UNDO</button>
-<button id="changeHalfButton" class="secondaryButton">CHANGE HALF</button>
-<button id="finishMatchButton" class="dangerButton">FINISH MATCH</button>
-</div>
-</section>
-
-<section class="historySection">
-<div class="historyHeader">
-<h3>EVENT HISTORY</h3>
-<button id="clearHistoryButton" class="iconButton">CLEAR</button>
-</div>
-
-<div id="eventHistoryList" class="historyList">
-<p class="emptyHistory">No events recorded.</p>
-</div>
-</section>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="historyPage" class="page">
-
-<header class="pageHeader">
-<button id="historyBackButton" class="backButton">←</button>
-<h2>MATCH HISTORY</h2>
-</header>
-
-<div class="historyPageContainer">
-
-<div class="historyToolbar">
-<input type="search" id="historySearch" placeholder="Search by team or competition">
-<select id="historyFilter">
-<option value="all">All Matches</option>
-<option value="league">League</option>
-<option value="tournament">Tournament</option>
-<option value="practice">Practice</option>
-<option value="training">Training</option>
-</select>
-</div>
-
-<div id="matchHistoryList" class="matchHistoryList"></div>
+  </section>
 
 </div>
 
-</section>
-
-<section id="matchDetailPage" class="page">
-
-<header class="pageHeader">
-<button id="detailBackButton" class="backButton">←</button>
-<h2>MATCH DETAIL</h2>
-</header>
-
-<div id="matchDetailContent" class="detailContainer"></div>
-
-<div class="detailButtons">
-<button id="openAnalysisButton" class="primaryButton">OPEN ANALYSIS</button>
-<button id="deleteMatchButton" class="dangerButton">DELETE MATCH</button>
+<!-- ============================================================ -->
+<!-- MODAL (OTHER / IN-MATCH HISTORY / CONFIRM)                    -->
+<!-- ============================================================ -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal-box" id="modal-box">
+    <button id="modal-close" class="modal-close">×</button>
+    <div id="modal-content"></div>
+  </div>
 </div>
 
-</section>
+<!-- ============================================================ -->
+<!-- AUTH FOOTER (Firebase Google Sign-In)                         -->
+<!-- ============================================================ -->
+<footer id="auth-footer">
+  <button id="btn-google-login" class="btn btn-google">Googleでログイン</button>
+  <button id="btn-logout" class="btn btn-logout hidden">ログアウト</button>
+</footer>
 
-<section id="analysisPage" class="page">
+<!-- ============================================================ -->
+<!-- Firebase SDK (compat build) -->
+<!-- ============================================================ -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 
-<header class="pageHeader">
-<button id="analysisBackButton" class="backButton">←</button>
-<h2>ANALYSIS</h2>
-</header>
-
-<div id="analysisContent" class="analysisContainer"></div>
-
-</section>
-
-<section id="settingsPage" class="page">
-
-<header class="pageHeader">
-<button id="settingsBackButton" class="backButton">←</button>
-<h2>SETTINGS</h2>
-</header>
-
-<div class="settingsContainer">
-
-<button id="loginButton" class="primaryButton">Google Login</button>
-<button id="logoutButton" class="secondaryButton">Logout</button>
-
-<label>
-<span>Dark Mode</span>
-<input type="checkbox" id="darkModeToggle">
-</label>
-
-<label>
-<span>Auto Save</span>
-<input type="checkbox" id="autoSaveToggle" checked>
-</label>
-
-</div>
-
-</section>
-
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-<script src="models/Player.js"></script>
-<script src="models/Team.js"></script>
-<script src="models/Shot.js"></script>
-<script src="models/MatchEvent.js"></script>
-<script src="models/Match.js"></script>
-
-<script src="js/storage.js"></script>
-<script src="js/timer.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/analysis.js"></script>
-<script src="js/firebase.js"></script>
-<script src="js/game.js"></script>
-<script src="js/main.js"></script>
-
-<script>
-if("serviceWorker" in navigator){
-window.addEventListener("load",()=>{
-navigator.serviceWorker.register("./service-worker.js");
-});
-}
-</script>
+<!-- App scripts (load order matters: config/utility first, orchestration last) -->
+<script src="firebase.js" defer></script>
+<script src="storage.js" defer></script>
+<script src="timer.js" defer></script>
+<script src="game.js" defer></script>
+<script src="analysis.js" defer></script>
+<script src="main.js" defer></script>
 
 </body>
 </html>
