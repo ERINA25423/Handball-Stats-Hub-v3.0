@@ -903,13 +903,16 @@ App.Game = (function () {
 
   function updateAnalysis() {
 
-    if (!currentMatch) {
-      return;
-    }
-
-    currentMatch.analysis = buildAnalysis();
-
+  if (!currentMatch) {
+    return;
   }
+
+  currentMatch.analysis = buildAnalysis();
+
+  currentMatch.analysis.players =
+    buildPlayerAnalysis();
+
+}
 
        function renderAnalysis() {
 
@@ -1089,13 +1092,6 @@ App.Game = (function () {
 
     currentMatch = clone(match);
 
-    updateAnalysis();
-
-    renderHistory();
-
-    renderAnalysis();
-
-    renderAnalysisDetails();
 
     App.UI.showScreen("screen-record");
 
@@ -1765,6 +1761,8 @@ App.Game = (function () {
     bindPositionEvents();
 
     bindNumberInputs(); 
+
+      bindShotSelectionEvents();
       
   }
 
