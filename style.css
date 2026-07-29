@@ -1857,7 +1857,7 @@ body{
 
 .screen{
     min-height:100vh;
-    padding:8px 10px;
+    padding:4px 6px;
     overflow:hidden;
 }
 
@@ -1884,7 +1884,7 @@ body{
 
 .app-title{
 
-    font-size:1.8rem;
+    font-size:1.45rem;
 
     white-space:nowrap;
 
@@ -1894,19 +1894,19 @@ body{
 
     justify-self:end;
 
-    font-size:1rem;
+    font-size:.85rem;
 
-    padding:8px 16px;
+    padding:6px 12px;
 
 }
 
 .timer-display{
 
-    min-width:105px;
+    min-width:88px;
 
-    font-size:2rem;
+    font-size:1.55rem;
 
-    padding:8px 12px;
+    padding:6px 10px;
 
 }
 
@@ -1929,9 +1929,9 @@ body{
 
 .toolbar-btn{
 
-    height:54px;
+    height:42px;
 
-    font-size:.95rem;
+    font-size:.82rem;
 
 }
 
@@ -1962,7 +1962,7 @@ body{
 
 .panel{
 
-    padding:12px;
+    padding:8px;
 
     border-radius:18px;
 
@@ -1970,7 +1970,7 @@ body{
 
 .panel-title{
 
-    font-size:.82rem;
+    font-size:.72rem;
 
     margin-bottom:10px;
 
@@ -2005,7 +2005,7 @@ min-height:330px;
 
 .position-btn{
 
-    min-height:72px;
+    min-height:56px;
 
     padding:8px;
 
@@ -2015,7 +2015,7 @@ min-height:330px;
 
 .position-label{
 
-    font-size:1rem;
+    font-size:.85rem;
 
 }
 
@@ -2070,7 +2070,7 @@ min-height:330px;
 
     margin-bottom:8px;
 
-    font-size:.95rem;
+    font-size:.82rem;
 
 }
 
@@ -2098,7 +2098,7 @@ min-height:330px;
 
     margin-bottom:8px;
 
-    font-size:.95rem;
+    font-size:.82rem;
 
 }
 
@@ -2132,7 +2132,7 @@ min-height:330px;
 
 .btn-action{
 
-    height:54px;
+    height:42px;
 
     font-size:.95rem;
 
