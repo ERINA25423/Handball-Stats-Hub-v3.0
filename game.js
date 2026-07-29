@@ -902,10 +902,11 @@ App.Game = (function () {
   }
 
   function updateAnalysis() {
+  if (!currentMatch) return;
 
-  if (!currentMatch) {
-    return;
-  }
+  currentMatch.analysis = buildAnalysis();
+  currentMatch.analysis.players = buildPlayerAnalysis();
+}
 
   currentMatch.analysis = buildAnalysis();
 
