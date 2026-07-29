@@ -1872,6 +1872,66 @@ input:focus-visible{
 }
 
 /* ===========================================================
+   LANDSCAPE LAYOUT
+   =========================================================== */
+
+@media screen and (orientation: landscape){
+
+    .record-grid{
+
+        display:grid;
+
+        grid-template-columns:2fr 2.4fr 1.2fr 1.2fr;
+
+        gap:16px;
+
+        align-items:start;
+
+    }
+
+    .panel-position{
+        grid-column:1;
+    }
+
+    .panel-course{
+        grid-column:2;
+    }
+
+    .panel-type{
+        grid-column:3;
+    }
+
+    .panel-result{
+        grid-column:4;
+    }
+
+    .action-row{
+
+        display:grid;
+
+        grid-template-columns:
+            repeat(4,1fr)
+            2fr
+            2fr;
+
+        gap:16px;
+
+        margin-top:18px;
+
+    }
+
+    .panel-position,
+    .panel-course,
+    .panel-type,
+    .panel-result{
+
+        min-height:430px;
+
+    }
+
+}
+
+/* ===========================================================
    END OF FILE
    =========================================================== */
 
