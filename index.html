@@ -37,21 +37,21 @@
   <!-- SCREEN 2: NEW MATCH SETUP                                     -->
   <!-- ============================================================ -->
   <section id="screen-new-match" class="screen">
-    <button id="btn-back-from-new-match" class="btn btn-back">
+    <button id="btn-back-home" class="btn btn-back">
       <span class="back-arrow">←</span>
       <span id="match-status-label">NO MATCH STARTED</span>
     </button>
 
     <h2 class="section-heading">MATCH INFORMATION</h2>
 
-    <label class="field-label" for="input-date">DATE</label>
-    <input type="date" id="input-date" class="field-input" />
+   <label class="field-label" for="match-date">DATE</label>
+<input type="date" id="match-date" class="field-input" />
 
     <label class="field-label" for="input-my-team">MY TEAM</label>
     <input type="text" id="input-my-team" class="field-input" placeholder="Team name" />
 
-    <label class="field-label" for="input-opponent">OPPONENT</label>
-    <input type="text" id="input-opponent" class="field-input" placeholder="Opponent name" />
+    <label class="field-label" for=“opponent-name">OPPONENT</label>
+    <input type="text" id="opponent-name" class="field-input" placeholder="Opponent name" />
 
     <button id="btn-start-match" class="btn btn-primary btn-block btn-large">START MATCH</button>
   </section>
@@ -85,35 +85,35 @@
         <div class="position-grid" id="position-grid">
           <button class="position-btn" data-position="LW">
             <span class="position-label">LW</span>
-            <input type="text" class="number-input" data-position-number="LW" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="LW" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="PV">
             <span class="position-label">PV</span>
-            <input type="text" class="number-input" data-position-number="PV" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="PV" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="RW">
             <span class="position-label">RW</span>
-            <input type="text" class="number-input" data-position-number="RW" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="RW" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="LB">
             <span class="position-label">LB</span>
-            <input type="text" class="number-input" data-position-number="LB" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="LB" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="CB">
             <span class="position-label">CB</span>
-            <input type="text" class="number-input" data-position-number="CB" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="CB" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="RB">
             <span class="position-label">RB</span>
-            <input type="text" class="number-input" data-position-number="RB" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="RB" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="GK">
             <span class="position-label">GK</span>
-            <input type="text" class="number-input" data-position-number="GK" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="GK" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
           <button class="position-btn" data-position="EP">
             <span class="position-label">EP</span>
-            <input type="text" class="number-input" data-position-number="EP" placeholder="#" inputmode="numeric" maxlength="2" />
+            <input type="text" class="number-input" data-number-position="EP" placeholder="#" inputmode="numeric" maxlength="2" />
           </button>
         </div>
       </div>
